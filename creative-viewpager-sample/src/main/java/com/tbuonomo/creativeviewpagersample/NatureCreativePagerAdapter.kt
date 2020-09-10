@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.support.v4.content.ContextCompat
+import android.support.v4.content.res.TypedArrayUtils.getText
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,8 +22,12 @@ class NatureCreativePagerAdapter(val context: Context) : CreativePagerAdapter {
     // Bind the views
     val title: TextView = headerRoot.findViewById(R.id.itemCreativeNatureTitle)
     val image: ImageView = headerRoot.findViewById(R.id.itemCreativeNatureImage)
+    val description: TextView = headerRoot.findViewById(R.id.itemCreativeNatureDescription)
 
-    title.text = context.getString(R.string.item_nature_title, position)
+//    title.text = context.getString(R.string.item_nature_title, position)
+    title.text = NatureItem.values()[position].natureName
+    description.text = NatureItem.values()[position].natureDescription
+//    title.text = ContextCompat.getText(context, NatureItem.values()[position].natureName)
     image.setImageDrawable(ContextCompat.getDrawable(context, NatureItem.values()[position].natureDrawable))
 
     return headerRoot
